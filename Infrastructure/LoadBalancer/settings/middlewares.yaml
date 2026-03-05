@@ -1,0 +1,12 @@
+middlewares:
+  - name: logging
+    enabled: true
+
+  - name: rate_limit
+    enabled: true
+    config:
+      rps: 20
+      burst: 50
+
+  - name: gzip
+    enabled: true
