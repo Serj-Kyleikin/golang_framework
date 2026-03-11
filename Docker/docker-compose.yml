@@ -58,6 +58,38 @@ services:
     networks:
       - app-network
 
+  backend3:
+    build:
+      context: .
+      dockerfile: Docker/Backend/Dockerfile
+    env_file:
+      - .env
+    environment:
+      HTTP_ADDR: ":${BACKEND3_APP_PORT}"
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    networks:
+      - app-network
+
+  backend4:
+    build:
+      context: .
+      dockerfile: Docker/Backend/Dockerfile
+    env_file:
+      - .env
+    environment:
+      HTTP_ADDR: ":${BACKEND4_APP_PORT}"
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    networks:
+      - app-network
+
   swagger:
     image: swaggerapi/swagger-ui:v5.17.14
     depends_on:
