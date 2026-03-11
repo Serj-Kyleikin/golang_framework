@@ -13,7 +13,7 @@ services:
       - .env
     environment:
       GATEWAY_INT_PORT: "${GATEWAY_INT_PORT}"
-      API_BACKENDS: "${API_BACKEND_1},${API_BACKEND_2}"
+      API_BACKENDS: "${API_BACKEND_1},${API_BACKEND_2},${API_BACKEND_3},${API_BACKEND_4}"
       <<: *gateway-certs
     volumes:
       - "${CERTS_HOST_PATH}:${WORKDIR}/${CERTS_DIR}:ro"
